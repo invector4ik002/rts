@@ -15,3 +15,7 @@ code {
 .nav-wrapper--padding {
    padding: 0 15px 0 15px;  
 }
+
+.input-field--margin {
+   margin: 30px 0 0 0;
+}

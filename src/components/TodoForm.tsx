@@ -10,7 +10,7 @@ interface TodoFormProps {
 }
 /**
  * Функциональный компонент 
- * @param props свойства функция добавления эл.todo в массив локального состояния 
+ * @param props свойства функция добавления элемунт.todo в массив локального состояния 
  * TS писание  TodoForm: React.FC<{ addHandler(title: string): void }
  * TodoForm: React.FC - является функциональным компонентом
  * <{ addHandler(title: string): void }> принемает в себя объект
@@ -18,7 +18,7 @@ interface TodoFormProps {
  * (title: string) которая принемает в себя title который является строкой который является void
  * 
  */
-export const TodoForm: React.FC<TodoFormProps> = (props) => {
+export const TodoForm: React.FC<TodoFormProps> = ({ addHandler }) => {
 
 //---------------------------------------способ №1 работа с локальным стейтом(useState) c input ----------------------------------------------
 //    const [title, setTitle] = useState<string>('');
@@ -42,6 +42,7 @@ export const TodoForm: React.FC<TodoFormProps> = (props) => {
       if(event.key === 'Enter') {
       //ref.current!.value TS реагирует ошибкой из за того что изночальное состояние null но установка символа '!' говорит TS все норм мы в курсе :)
       console.log('TodoForm: components/TodoForm (f)keyPressHandler =>', ref.current!.value);
+      addHandler(ref.current!.value);
       ref.current!.value = ''; // чистим поле input
 //----------------------------------------способ №1 работа с локальным стейтом(useState) c input-----------------------------------------------
          // console.log('TodoForm: components/TodoForm (f)keyPressHandler =>', title);

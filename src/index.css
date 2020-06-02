@@ -19,3 +19,25 @@ code {
 .input-field--margin {
    margin: 30px 0 0 0;
 }
+
+.todo {
+   margin-bottom: 15px;
+}
+
+.todo.complited span {
+   text-decoration: line-through;
+}
+
+.todo label {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   cursor: pointer;
+   padding: 15px;
+   background: #ffffff;
+}
+
+.todo i {
+   z-index: 2;
+}

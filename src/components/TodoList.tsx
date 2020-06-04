@@ -9,6 +9,8 @@ import { ITodo } from '../interfaces';
 type TodoListProps = {
    // todos: any[]
    todos: ITodo[]
+   onToggle: (id: number) => void
+   onRemove: () => void
 };
 /**
  * @param {todos} - массив-пропс :)

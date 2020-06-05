@@ -33,14 +33,19 @@ const App: React.FC = () => {
  * @param id 
  */
    const tooggleHandler = (id: number) => {
-
+      setTodos(prev => prev.map((todo) => {
+         if(todo.id === id) {
+            todo.complited = !todo.complited
+         }
+         return todo
+      }))
    };
 /**
  * 
  * @param id 
  */
    const removeHanler = (id: number) => {
-
+      setTodos( (prev) => prev.filter(todo => todo.id !== id))
    };
 
    return (
@@ -50,7 +55,11 @@ const App: React.FC = () => {
             {/* при сипользовании TS при передачи свойств в дочерний компонент возникает ошибка, для ее устранения нужно в самом компоненте указать какие 
             именно св-вва принемает компонент с ками данными! */}
             <TodoForm addHandler={addHandler}/>
-            <TodoList todos={todos}/>
+            <TodoList 
+               todos={todos}
+               tooggleHandler={tooggleHandler}
+               removeHanler={removeHanler}
+            />
          </div>
       </>
    );

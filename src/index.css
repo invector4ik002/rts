@@ -24,7 +24,7 @@ code {
    margin-bottom: 15px;
 }
 
-.todo.complited span {
+.todo.completed span {
    text-decoration: line-through;
 }
 

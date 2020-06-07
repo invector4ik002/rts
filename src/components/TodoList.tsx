@@ -11,19 +11,30 @@ type TodoListProps = {
    // todos: any[]
    todos: ITodo[]
    tooggleHandler: (id: number) => void
-   removeHanler: (id: number) => void
+   onRemove: (id: number) => void
 };
 /**
  * @param {todos} - массив-пропс :)
  */
-export const TodoList: React.FC<TodoListProps> = ({ todos, tooggleHandler, removeHanler }) => {
+export const TodoList: React.FC<TodoListProps> = ({ todos, tooggleHandler, onRemove }) => {
+
+   if(todos.length === 0) {
+      return <p className="center">Дела нет</p>
+   } 
+
+   const removeHanler = (event: React.MouseEvent, id: number) => {
+      event.preventDefault();
+
+      onRemove(id)
+   }
+
    return (
       <ul>
-         {todos.map( (todo) => {
+         {todos.map(todo => {
 
-            const classes = ['todo'];
-            if(todo.complited) {
-               classes.push('complited')
+            const classes = ['todo']
+            if(todo.completed) {
+               classes.push('completed')
             }
 
             return (
@@ -31,13 +42,13 @@ export const TodoList: React.FC<TodoListProps> = ({ todos, tooggleHandler, remov
                   <label>   
                      <input 
                         type='checkbox' 
-                        checked={todo.complited} 
+                        checked={todo.completed} 
                         onChange={tooggleHandler.bind(null, todo.id)}
                      />
                      <span>{todo.title}</span>
                      <i 
                         className='material-icons red-text' 
-                        onClick={() => removeHanler(todo.id)}
+                        onClick={(event) => removeHanler(event, todo.id)}
                      >delete</i>
                   </label>
                </li>
